@@ -79,7 +79,6 @@ class polyvXBlock(XBlock):
         """
         The saving handler.
         """
-        self.display_name = data['display_name']
         self.vid = data['vid']
         self.width = data['width']
         self.height = data['height']
