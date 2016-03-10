@@ -20,12 +20,12 @@ class polyvXBlock(XBlock):
         help="The vid for your video.")
 
     width = Integer(display_name="Video player width",
-        default="800",
+        default="850",
 	    scope=Scope.content,
 	    help="The width for your video player.")
 
     height = Integer(display_name="Video player height",
-        default="500",
+        default="478",
 	    scope=Scope.content,
         help="The height for your video player.")
 
