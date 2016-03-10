@@ -20,12 +20,12 @@ class polyvXBlock(XBlock):
         help="The vid for your video.")
 
     width = Integer(display_name="Video player width",
-        default="600",
+        default="800",
 	    scope=Scope.content,
 	    help="The width for your video player.")
 
     height = Integer(display_name="Video player height",
-        default="336",
+        default="500",
 	    scope=Scope.content,
         help="The height for your video player.")
 
@@ -46,7 +46,9 @@ class polyvXBlock(XBlock):
 
         context = {
             'id': ''.join(('polyvplayer', self.vid)),
-            'vid': ''.join(('vid=', self.vid))
+            'vid': ''.join(('vid=', self.vid)),
+            'width': self.width,
+            'height': self.height
         }
 
         html = self.render_template('static/html/student.html', context)
