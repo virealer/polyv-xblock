@@ -7,8 +7,6 @@ function polyvXBlockInitStudio(runtime, element) {
     $(element).find('.action-save').bind('click', function() {
         var data = {
             'vid': $('#polyv_vid').val(),
-            'width': $('#polyv_edit_width').val(),
-            'height': $('#polyv_edit_height').val(),
         };
 
         runtime.notify('save', {state: 'start'});

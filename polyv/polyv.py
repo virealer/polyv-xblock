@@ -80,9 +80,7 @@ class polyvXBlock(XBlock):
         The saving handler.
         """
         self.vid = data['vid']
-        self.width = data['width']
-        self.height = data['height']
-
+        
         return {
             'result': 'success',
         }
