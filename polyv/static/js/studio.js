@@ -49,7 +49,7 @@ function polyvXBlockInitStudio(runtime, element) {
         }
     });
 
-    $(element).find('.action-upload').click(function(){
-        $('#file_upload').uploadifive('upload');
-    });
+//    $(element).find('.action-upload').click(function(){
+//        $('#file_upload').uploadifive('upload');
+//    });
 }
