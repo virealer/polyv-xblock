@@ -24,7 +24,7 @@ function polyvXBlockInitStudio(runtime, element) {
     });
 
     $('#file_upload').uploadifive({
-        'auto':false,
+        'auto': true,
         //'uploadScript':'static/lib/uploadify/uploadify.php',
         'formData':{
         'fcharset':'ISO-8859-1',
