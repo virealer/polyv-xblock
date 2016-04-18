@@ -19,6 +19,14 @@ class polyvXBlock(XBlock):
         scope=Scope.content, #Scope.content和Scope.settings不同在于，(可见性)本课多处可用
         help="The vid for your video.")
 
+    file_id = String(display_name="video vid",
+    default="14651978969257526622",
+    scope=Scope.content)
+
+    app_id = String(display_name="app_id",
+    default="1252067100",
+    scope=Scope.content)
+
     width = Integer(display_name="Video player width",
         default="850",
 	    scope=Scope.content,
@@ -47,13 +55,17 @@ class polyvXBlock(XBlock):
         context = {
             'id': ''.join(('polyvplayer', self.vid)),
             'vid': ''.join(('vid=', self.vid)),
+            'file_id':self.file_id,
+
             'width': self.width,
             'height': self.height
         }
 
         html = self.render_template('static/html/student.html', context)
         frag = Fragment(html)
-
+        frag.add_javascript(self.load_resource("static/js/qcould_api.js"))
+        frag.add_javascript(self.load_resource("static/js/qcould_view.js"))
+        frag.initialize_js('qcouldXBlockInitView')
         return frag
 
     def studio_view(self, context=None):
@@ -61,6 +73,7 @@ class polyvXBlock(XBlock):
         context = {
             'display_name': self.display_name,
             'vid': self.vid,
+            'file_id':self.file_id,
             'width': self.width,
             'height': self.height
         }
@@ -71,6 +84,7 @@ class polyvXBlock(XBlock):
         frag.add_css(self.resource_string("static/css/uploadifive.css"))
         frag.add_javascript(self.resource_string("static/js/jquery.uploadifive.js"))
         frag.add_javascript(self.resource_string('static/js/studio.js'))
+        frag.add_javascript(self.resource_string('static/js/upladerh5.js'))
         frag.initialize_js('polyvXBlockInitStudio')
         return frag
 
@@ -80,7 +94,7 @@ class polyvXBlock(XBlock):
         The saving handler.
         """
         self.vid = data['vid']
-        
+        self.file_id = data['file_id']
         return {
             'result': 'success',
         }
