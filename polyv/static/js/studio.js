@@ -10,7 +10,7 @@ function polyvXBlockInitStudio(runtime,element) {
             onComplete = function (file, data, response) {
                 var jsonobj = eval('(' + data + ')');
                 // alert(jsonobj.data[0].vid + " - " + jsonobj.data[0].playerwidth + " - " + jsonobj.data[0].duration);
-                $("#polyv_vid").val(jsonobj.data[0].vid);
+                $("#video_vid").val(jsonobj.data[0].vid);
             };
         }
 
@@ -49,6 +49,7 @@ function polyvXBlockInitStudio(runtime,element) {
         }
         else if(value === "qqcloud"){
             console.log(value);
+            
             //elemContainer.find('.action-upload').unbind("click").click(function () {
                 var ErrorCode = qcVideo.get('ErrorCode'),
                     JSON = qcVideo.get('JSON'),
@@ -71,7 +72,7 @@ function polyvXBlockInitStudio(runtime,element) {
                         onFileUpdate: function (args) {
                             Log.debug(args);
                             if(args.code === 6){
-                                $("#qcloud_edit_file_id").val(args.serverFileId);
+                                $("#video_vid").val(args.serverFileId);
                             }
                         },
 
@@ -104,8 +105,8 @@ function polyvXBlockInitStudio(runtime,element) {
             'display_name': $('#video_display_name').val(),
             //'domain_url': $('#qiniu_edit_domain_url').val(),
             //'video_name': $('#file_upload').val(),
-            'vid':$('#polyv_vid').val(),
-            'file_id':$('#qcloud_edit_file_id').val(),
+            'vid':$('#video_vid').val(),
+            //'file_id':$('#qcloud_edit_file_id').val(),
             'width': $('#video_edit_width').val(),
             'height': $('#video_edit_height').val()
         };
